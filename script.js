@@ -18,9 +18,7 @@ const reload = () => {
   localStorage.setItem("highScore", highScore);
   location.reload();
 };
-//=========================================================
-// game conditions ==========click button=======================================================================
-document.querySelector(".check").addEventListener("click", function () {
+const checkHandler = () => {
   if (
     !guessInput.value ||
     Number(guessInput.value) <= 0 ||
@@ -57,14 +55,16 @@ document.querySelector(".check").addEventListener("click", function () {
       document.querySelector(".highscore").textContent = highScore;
     }
   }
-});
+};
+//=========================================================
+// game conditions ==========check button=======================================================================
+document.querySelector(".check").addEventListener("click", checkHandler);
 //==================================================================================================================================
 //AGAIN button===============================================================================================================
 document.querySelector(".again").addEventListener("click", reload);
 document.querySelector(".highscore").textContent = Number(savedHighScoreValue);
-
-
+//clear the files in localStorage of the user===========================================
 const clear = () => {
-  localStorage.removeItem('highScore')
-  location.reload()
-}
+  localStorage.removeItem("highScore");
+  location.reload();
+};
